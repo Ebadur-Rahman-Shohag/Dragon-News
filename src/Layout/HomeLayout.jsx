@@ -1,8 +1,11 @@
 import React from 'react'
+import LatestNews from '../components/LatestNews/LatestNews'
 
 function HomeLayout() {
     return (
-        <div>HomeLayout</div>
+        <>
+            <LatestNews />
+        </>
     )
 }
 
