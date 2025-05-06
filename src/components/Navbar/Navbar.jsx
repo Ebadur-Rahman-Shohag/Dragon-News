@@ -1,7 +1,11 @@
-import React from 'react'
-import { NavLink } from 'react-router'
+import React, { useContext } from 'react'
+import { Link, NavLink } from 'react-router'
 import profileIcon from "../../assets/user.png"
+import { AuthContext } from '../../provider/AuthProvider'
+
 function Navbar() {
+    const user = useContext(AuthContext)
+    console.log(user);
     return (
         <>
             <nav className='w-full max-w-11/12 mx-auto flex justify-between items-center py-8'>
@@ -9,7 +13,7 @@ function Navbar() {
                 <div></div>
                 {/* menu links */}
                 <div className='space-x-5 text-dark-3 text-lg'>
-                    <NavLink to="/home">Home</NavLink>
+                    <NavLink to="/">Home</NavLink>
                     <NavLink to="/about">About</NavLink>
                     <NavLink to="/career">Career</NavLink>
 
@@ -17,7 +21,7 @@ function Navbar() {
                 {/* profile icon and button */}
                 <div className='flex items-center gap-3'>
                     <img src={profileIcon} alt="profile-icon" />
-                    <button className='btn bg-dark-2 text-white text-xl font-semibold px-7 py-5'>Login</button>
+                    <Link to="/auth/login" className='btn bg-dark-2 text-white text-xl font-semibold px-7 py-5'>Login</Link>
                 </div>
             </nav>
         </>

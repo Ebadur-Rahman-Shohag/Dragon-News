@@ -1,19 +1,13 @@
-import React from 'react';
-import { FaEye } from 'react-icons/fa';
-import { FaStar } from 'react-icons/fa6';
-import { MdShare } from 'react-icons/md';
-import { MdBookmarkBorder } from 'react-icons/md';
+import React from "react";
+import { FaEye } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
+import { MdShare } from "react-icons/md";
+import { MdBookmarkBorder } from "react-icons/md";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-    const {
-        title,
-        rating,
-        total_view,
-        author,
-        thumbnail_url,
-        details,
-        tags
-    } = news;
+    const { id, title, rating, total_view, author, thumbnail_url, details, tags } =
+        news;
 
     const formattedDate = new Date(author.published_date).toLocaleDateString();
 
@@ -22,7 +16,11 @@ const NewsCard = ({ news }) => {
             {/* Header */}
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                    <img src={author.img} alt={author.name} className="w-10 h-10 rounded-full" />
+                    <img
+                        src={author.img}
+                        alt={author.name}
+                        className="w-10 h-10 rounded-full"
+                    />
                     <div>
                         <p className="font-semibold">{author.name}</p>
                         <p className="text-xs text-gray-500">{formattedDate}</p>
@@ -46,10 +44,12 @@ const NewsCard = ({ news }) => {
 
             {/* Details */}
             <p className="text-sm text-gray-600">
-                {details.length > 200 ? details.slice(0, 200) + '...' : details}
-                <span className="text-red-500 font-semibold ml-1 cursor-pointer">
-                    Read More
-                </span>
+                {details.length > 200 ? details.slice(0, 200) + "..." : details}
+                <Link to={`/details/${id}`}>
+                    <span className="text-red-500 font-semibold ml-1 cursor-pointer">
+                        Read More
+                    </span>
+                </Link>
             </p>
 
             {/* Footer */}
